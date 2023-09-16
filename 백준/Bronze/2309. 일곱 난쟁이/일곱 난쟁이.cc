@@ -1,42 +1,28 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 int a[9], sum;
-pair<int, int> ret;
-vector<int> v;
-void solve()
-{
-  for (int i = 0; i < 9; i++)
-  {
-    for (int j = 0; j < i; j++)
-    {
-      if (sum - a[i] - a[j] == 100)
-      {
-        ret = {i, j};
-        return;
-      }
+pair<int, int> p;
+void solve() {
+    for (int i = 0; i < 9; i++) {
+        for (int j = i + 1; j < 9; j++) {
+            if (sum - a[i] - a[j] == 100) {
+                p = {a[i], a[j]};
+            }
+        }
     }
-  }
 }
-int main()
-{
-  cin.tie(NULL);
-  cout.tie(NULL);
-  for (int i = 0; i < 9; i++)
-  {
-    cin >> a[i];
-    sum += a[i];
-  }
-  solve();
-  for (int i = 0; i < 9; i++)
-  {
-    if (ret.first == i || ret.second == i)
-    {
-      continue;
+int main() {
+    cin.tie(NULL);
+    cout.tie(NULL);
+    for (int i = 0; i < 9; i++) {
+        cin >> a[i];
+        sum += a[i];
     }
-    v.push_back(a[i]);
-  }
-  sort(v.begin(), v.end());
-  for (int i : v)
-    cout << i << "\n";
-  return 0;
+    solve();
+    sort(a, a + 9);
+    for (int n : a) {
+        if (p.second == n || p.first == n) continue;
+        cout << n << "\n";
+    }
+    return 0;
 }
