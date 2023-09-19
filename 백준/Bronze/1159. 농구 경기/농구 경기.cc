@@ -1,29 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-map<char, int> mp;
+int N, cnt[26];
 string s;
-int N;
 bool b;
+
 int main() {
     cin.tie(NULL);
     cout.tie(NULL);
     cin >> N;
-    while (N-- > 0) {
+    while(N-- > 0) {
         cin >> s;
-        char c = char(* (s.begin()));
-        if (mp.find(c) == mp.end()) {
-            mp.insert({c, 1});
-            continue;
-        }
-        mp[c]++;
+        char c = s[0]; // 영어 1byte 이렇게 해도 상관없음
+        cnt[c - 'a']++;
     }
-    
-    for (auto it: mp) {
-        if (it.second >= 5) {
-            cout << it.first;
+   
+    for (int i = 0; i < 26; i++) {
+        if (cnt[i] >= 5) {
+            cout << (char)(i + 'a');
             b = true;
         }
     }
+    
     if (!b) {
         cout << "PREDAJA";
     }
