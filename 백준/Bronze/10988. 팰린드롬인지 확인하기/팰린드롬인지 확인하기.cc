@@ -1,19 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-string s, cp;
-int ret = 1;
+string rev, origin; 
 
 int main() {
-    cin >> s;
-    cp = s;
-    reverse(s.begin(), s.end());
-    for (int i = 0; i < s.size(); i++) {
-        if (char(* (s.begin() + i)) != char(*(cp.begin() + i))) {
-            ret = 0;
-            break;
-        }
-    }
-    
-    cout << ret;
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+	cin >> rev;
+	origin = rev;
+	reverse(rev.begin(), rev.end());
+	cout << (origin == rev);
     return 0;
 }
