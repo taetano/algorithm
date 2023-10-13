@@ -1,28 +1,25 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int a[9], sum;
-pair<int, int> p;
-void solve() {
-    for (int i = 0; i < 9; i++) {
-        for (int j = i + 1; j < 9; j++) {
-            if (sum - a[i] - a[j] == 100) {
-                p = {a[i], a[j]};
-            }
-        }
-    }
-}
+
+int total, a[9];
+
 int main() {
-    cin.tie(NULL);
-    cout.tie(NULL);
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
     for (int i = 0; i < 9; i++) {
         cin >> a[i];
-        sum += a[i];
     }
-    solve();
+    
     sort(a, a + 9);
-    for (int n : a) {
-        if (p.second == n || p.first == n) continue;
-        cout << n << "\n";
-    }
+    do {
+        total = 0;
+        for (int i = 0; i < 7; i++) total += a[i];
+        if (total != 100) continue;
+        
+        for (int i = 0; i < 7; i++) {
+            cout << a[i] << "\n";
+        }
+        break;
+    } while (next_permutation(a, a + 9));
+    
     return 0;
 }
